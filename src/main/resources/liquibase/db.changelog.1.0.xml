@@ -1,0 +1,109 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <property name="uuid_type" value="uuid" dbms="postgresql"/>
+    <property name="uuid_function" value="uid.uuid_generate_v4()" dbms="postgresql"/>
+
+
+    <changeSet id="1.0.0" author="goldsilver12">
+        <createTable tableName="users">
+            <column name="id" type="${uuid_type}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="user_name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="role_id" type="BIGINT" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" >
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.0.1" author="goldsilver12">
+        <createTable tableName="roles">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.0.25" author="goldsilver12">
+        <insert tableName="roles">
+            <column name="name" value="ROLE_ADMIN"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="name" value="ROLE_CLIENT"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="name" value="ROLE_ORGANIZATION_ADMIN"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="name" value="ROLE_VOLUNTEER"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.0.26" author="goldsilver12">
+        <insert tableName="users">
+            <column name="id" value="076a697c-2d1f-11ec-8d3d-0242ac130003"/>
+            <column name="user_name" value="goldsilverTest1"/>
+            <column name="email" value="test@nure.ua"/>
+            <column name="password" value="$2a$10$V003J.CCI6Al4EXozE/EfeHGIysls/i0E62IuJ7fIuEvmpHxAXcLK"/>
+            <column name="created" value="2021-09-29 22:54:27.291000"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="role_id" value="1"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" value="076a697c-2d1f-11ec-8d3d-0242ac130004"/>
+            <column name="user_name" value="goldsilverTest2"/>
+            <column name="email" value="test1@nure.ua"/>
+            <column name="password" value="$2a$10$V003J.CCI6Al4EXozE/EfeHGIysls/i0E62IuJ7fIuEvmpHxAXcLK"/>
+            <column name="created" value="2021-09-29 22:54:27.291000"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="role_id" value="4"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
