@@ -1,9 +1,9 @@
-package com.nure.ua.Volunteering_UA.security.service;
+package com.nure.ua.Volunteering_UA.service.security.service;
 
 import com.nure.ua.Volunteering_UA.model.user.User;
 import com.nure.ua.Volunteering_UA.repository.user.UserRepository;
-import com.nure.ua.Volunteering_UA.security.jwt.JwtUser;
-import com.nure.ua.Volunteering_UA.security.jwt.JwtUserFactory;
+import com.nure.ua.Volunteering_UA.service.security.jwt.JwtUser;
+import com.nure.ua.Volunteering_UA.service.security.jwt.JwtUserFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

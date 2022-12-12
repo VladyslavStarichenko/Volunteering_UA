@@ -11,6 +11,8 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +23,6 @@ import java.util.Set;
 @Entity
 @Table(name = "organization")
 public class Organization extends BaseEntity {
-
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +45,17 @@ public class Organization extends BaseEntity {
   @OneToMany(mappedBy = "organization")
   private List<Aid_Request> requests;
 
-//  @OneToOne(cascade = CascadeType.ALL)
+  public Organization(String name, Volunteering_Type volunteering_type, User org_admin) {
+    this.name = name;
+    this.volunteering_type = volunteering_type;
+    this.org_admin = org_admin;
+    this.volunteers = new ArrayList<>();
+    this.subscribers = new ArrayList<>();
+    this.requests = new ArrayList<>();
+
+  }
+
+  //  @OneToOne(cascade = CascadeType.ALL)
 //  @JoinColumn(name = "statistic_id", referencedColumnName = "id")
 //  private Statistic statistic;
 }

@@ -1,8 +1,8 @@
 package com.nure.ua.Volunteering_UA.config;
 
 
-import com.nure.ua.Volunteering_UA.security.jwt.JwtConfigurer;
-import com.nure.ua.Volunteering_UA.security.jwt.JwtTokenProvider;
+import com.nure.ua.Volunteering_UA.service.security.jwt.JwtConfigurer;
+import com.nure.ua.Volunteering_UA.service.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtTokenProvider jwtTokenProvider;
     private static final String ADMIN_ENDPOINT = "/admin/**";
-    private static final String LOGIN_ENDPOINT = "/auth/login";
+    private static final String LOGIN_ENDPOINT = "/auth/**";
     private static final String SIGN_UP_ENDPOINT = "/auth/signUp";
 
 

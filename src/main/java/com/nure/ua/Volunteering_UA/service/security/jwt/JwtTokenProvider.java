@@ -1,4 +1,4 @@
-package com.nure.ua.Volunteering_UA.security.jwt;
+package com.nure.ua.Volunteering_UA.service.security.jwt;
 
 import com.nure.ua.Volunteering_UA.model.user.Role;
 import io.jsonwebtoken.*;

@@ -2,7 +2,10 @@ package com.nure.ua.Volunteering_UA.controller.authentication;
 
 import com.nure.ua.Volunteering_UA.dto.AuthenticationDto;
 import com.nure.ua.Volunteering_UA.dto.AuthorizationDto;
-import com.nure.ua.Volunteering_UA.security.service.UserServiceSCRT;
+import com.nure.ua.Volunteering_UA.dto.CustomerGetDto;
+import com.nure.ua.Volunteering_UA.dto.VolunteerGetDto;
+import com.nure.ua.Volunteering_UA.exeption.EmptyDataException;
+import com.nure.ua.Volunteering_UA.service.security.service.UserServiceSCRT;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -27,12 +30,10 @@ public class AuthenticationController {
 
     private final UserServiceSCRT userService;
 
-
     @Autowired
     public AuthenticationController(UserServiceSCRT userService) {
         this.userService = userService;
     }
-
 
     @PostMapping("login")
     @ApiOperation(value = "Login to the system")
@@ -44,28 +45,23 @@ public class AuthenticationController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping("registerVolunteer")
+    @ApiOperation(value = "Register Volunteer")
+    public ResponseEntity<VolunteerGetDto> registerVolunteer(@ApiParam(value = "User object to sign up to the system") @RequestBody AuthenticationDto user) {
+        if (user == null) {
+            throw new EmptyDataException("Invalid or empty input");
+        }
+        VolunteerGetDto volunteerGetDto = userService.signUpVolunteer(user.toUser());
+        return new ResponseEntity<>(volunteerGetDto, HttpStatus.CREATED);
+    }
 
-
-//    @PostMapping("registerResident/id={id}")
-//    @PreAuthorize("hasRole('ROLE_COMPLEX_ADMIN')")
-//    @ApiOperation(value = "Register Resident")
-//    public ResponseEntity<ResidentGetDto> registerResident(@ApiParam(value = "User object to sign up to the system") @RequestBody AuthorizationDto user,
-//                                                           @ApiParam(value = "Flat id") @PathVariable Long id) {
-//        if (user == null) {
-//            throw new EmptyDataException("Invalid or empty input");
-//        }
-//        ResidentGetDto residentGetDto = userService.signUpResident(user.toUser(), id);
-//        return new ResponseEntity<>(residentGetDto, HttpStatus.CREATED);
-//    }
-//
-//
-//    @PostMapping("registerCleaner")
-//    @PreAuthorize("hasRole('ROLE_COMPLEX_ADMIN')")
-//    @ApiOperation(value = "Register Resident")
-//    public ResponseEntity<CleanerGetDto> registerCleaner(@ApiParam(value = "User object to sign up to the system") @RequestBody AuthorizationDto userDto) {
-//
-//        User user = userDto.toUser();
-//        CleanerGetDto cleanerGetDto = userService.signUpCleaner(user);
-//        return new ResponseEntity<>(cleanerGetDto, HttpStatus.CREATED);
-//    }
+    @PostMapping("registerCustomer")
+    @ApiOperation(value = "Register Customer")
+    public ResponseEntity<CustomerGetDto> registerCustomer(@ApiParam(value = "User object to sign up to the system") @RequestBody AuthenticationDto user) {
+        if (user == null) {
+            throw new EmptyDataException("Invalid or empty input");
+        }
+        CustomerGetDto customerGetDto = userService.signUpCustomer(user.toUser());
+        return new ResponseEntity<>(customerGetDto, HttpStatus.CREATED);
+    }
 }

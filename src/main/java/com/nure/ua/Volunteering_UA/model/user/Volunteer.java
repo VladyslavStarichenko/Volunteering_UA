@@ -1,9 +1,12 @@
 package com.nure.ua.Volunteering_UA.model.user;
 
+import com.nure.ua.Volunteering_UA.model.Notification;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -28,5 +31,10 @@ public class Volunteer {
           joinColumns = @JoinColumn(name = "volunteer_id"),
           inverseJoinColumns = @JoinColumn(name = "organization_id")
   )
-  List<Organization> volunteering_area;
+  private List<Organization> volunteering_area;
+
+  public Volunteer(User user) {
+    this.user = user;
+    this.volunteering_area = new ArrayList<>();
+  }
 }

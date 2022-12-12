@@ -9,6 +9,7 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ import java.util.Set;
 @Entity
 @Table(name = "customers")
 public class Customer {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -27,20 +29,25 @@ public class Customer {
   @JoinColumn(name = "user_id", referencedColumnName = "id")
   private User user;
 
-  @Column(name = "bill")
-  private Double bill;
-
   @ManyToMany
   @JoinTable(
           name = "subscriptions",
           joinColumns = @JoinColumn(name = "customer_id"),
           inverseJoinColumns = @JoinColumn(name = "organization_id")
   )
-  Set<Organization> subscriptions;
+  private List<Organization> subscriptions;
 
   @OneToMany(mappedBy="customer")
   private List<Notification> notifications;
 
   @OneToMany(mappedBy = "customer")
-  List<Aid_Request> requests;
+  private List<Aid_Request> requests;
+
+  public Customer(User user) {
+    this.user = user;
+    this.notifications = new ArrayList<>();
+    this.subscriptions = new ArrayList<>();
+    this.requests = new ArrayList<>();
+  }
+
 }

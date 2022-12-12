@@ -22,6 +22,12 @@ public class Aid_Request {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  private String title;
+
+  private String description;
+
+  private int amount;
+
   @ManyToOne
   @JoinColumn(name="org_id", nullable=false)
   private Organization organization;
