@@ -25,4 +25,9 @@ public class Notification {
     private Customer customer;
 
     private String message;
+
+    public Notification(Customer customer, String message) {
+        this.customer = customer;
+        this.message = message;
+    }
 }
