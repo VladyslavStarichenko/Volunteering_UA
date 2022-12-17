@@ -75,7 +75,7 @@
             <column name="name" value="ROLE_ADMIN"/>
         </insert>
         <insert tableName="roles">
-            <column name="name" value="ROLE_CLIENT"/>
+            <column name="name" value="ROLE_CUSTOMER"/>
         </insert>
         <insert tableName="roles">
             <column name="name" value="ROLE_ORGANIZATION_ADMIN"/>
