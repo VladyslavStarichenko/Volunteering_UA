@@ -38,9 +38,9 @@ public class AdminController {
     this.userRepository = userRepository;
   }
 
-  @PostMapping("registerComplexAdmin")
+  @PostMapping("registerVolunteeringAdmin")
   @PreAuthorize("hasRole('ROLE_ADMIN')")
-  @ApiOperation(value = "Register Admin")
+  @ApiOperation(value = "Register volunteering organization admin")
   public ResponseEntity<Map<Object, Object>> signUp(@ApiParam(value = "User object to sign up to the system") @RequestBody AuthenticationDto user) {
     if (user == null) {
       throw new EmptyDataException("Invalid or empty input");
@@ -50,9 +50,9 @@ public class AdminController {
   }
 
 
-  @PutMapping("blockComplexAdmin/{adminName}")
+  @PutMapping("blockVolunteeringAdmin/{adminName}")
   @PreAuthorize("hasRole('ROLE_ADMIN')")
-  @ApiOperation(value = "Register Admin")
+  @ApiOperation(value = "Register volunteering organization admin")
   public ResponseEntity<String> block(@ApiParam(value = "User object to sign up to the system") @PathVariable String adminName) {
     Optional<User> userDb = userRepository.findUserByUserName(adminName);
     if (userDb.isPresent()) {
