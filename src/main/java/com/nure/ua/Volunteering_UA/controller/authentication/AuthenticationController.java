@@ -2,8 +2,8 @@ package com.nure.ua.Volunteering_UA.controller.authentication;
 
 import com.nure.ua.Volunteering_UA.dto.AuthenticationDto;
 import com.nure.ua.Volunteering_UA.dto.AuthorizationDto;
-import com.nure.ua.Volunteering_UA.dto.CustomerGetDto;
-import com.nure.ua.Volunteering_UA.dto.VolunteerGetDto;
+import com.nure.ua.Volunteering_UA.dto.customer.CustomerGetDto;
+import com.nure.ua.Volunteering_UA.dto.volunteer.VolunteerGetDto;
 import com.nure.ua.Volunteering_UA.exeption.EmptyDataException;
 import com.nure.ua.Volunteering_UA.service.security.service.UserServiceSCRT;
 import io.swagger.annotations.Api;
@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
