@@ -1,8 +1,8 @@
 package com.nure.ua.Volunteering_UA.service.security.service;
 
 import com.nure.ua.Volunteering_UA.dto.AuthorizationDto;
-import com.nure.ua.Volunteering_UA.dto.CustomerGetDto;
-import com.nure.ua.Volunteering_UA.dto.VolunteerGetDto;
+import com.nure.ua.Volunteering_UA.dto.customer.CustomerGetDto;
+import com.nure.ua.Volunteering_UA.dto.volunteer.VolunteerGetDto;
 import com.nure.ua.Volunteering_UA.exeption.CustomException;
 import com.nure.ua.Volunteering_UA.model.user.*;
 import com.nure.ua.Volunteering_UA.repository.customer.CustomerRepository;
