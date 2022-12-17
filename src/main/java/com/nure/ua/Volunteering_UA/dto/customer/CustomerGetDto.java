@@ -1,9 +1,11 @@
-package com.nure.ua.Volunteering_UA.dto;
+package com.nure.ua.Volunteering_UA.dto.customer;
 
-import com.nure.ua.Volunteering_UA.model.Aid_Request;
+import com.nure.ua.Volunteering_UA.dto.request.Aid_Req_Dto;
 import com.nure.ua.Volunteering_UA.model.user.Customer;
-import com.nure.ua.Volunteering_UA.model.user.Volunteer;
+
 import java.util.List;
+
+import com.nure.ua.Volunteering_UA.model.user.Volunteering_Type;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ public class CustomerGetDto {
   private String email;
   private Long id;
   private List<Aid_Req_Dto> aid_requests;
+
 
   public static CustomerGetDto toDto(Customer customer){
     return new CustomerGetDto(
