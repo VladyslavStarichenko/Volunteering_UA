@@ -40,6 +40,9 @@ public class Aid_Request {
 
   private Request_Status requestStatus;
 
+  @Column(name = "code", updatable = false, nullable = false)
+  private int conformationCode;
+
 
 
 }
